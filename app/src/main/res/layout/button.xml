@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+        <Button
+            android:id="@+id/Bobi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bobi"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:background="@drawable/bg_button"/>
+
+
+        <Button
+            android:id="@+id/Max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:background="@drawable/bg_button"
+            android:layout_marginTop="@android:dimen/app_icon_size"/>
+
+        <Button
+            android:id="@+id/yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="yellow"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#FFE815"
+            android:background="@drawable/bg_button"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            />
+
+        <Button
+            android:id="@+id/Rex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rex"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:background="@drawable/bg_button"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            />
+
+
+</LinearLayout>
