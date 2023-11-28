@@ -32,6 +32,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 class MainAct: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,26 +45,6 @@ class MainAct: ComponentActivity() {
         }
     }
 }
-
-//@Composable
-//fun Comp(){
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .background(Color.Black),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center
-//    ) {
-//        Text(
-//            text = "This is a showcase app using compose with the unsplash api",
-//            color = Color.White,
-//            textAlign = TextAlign.Center,
-//            fontSize = 21.sp
-//
-//
-//        )
-//    }
-//}
 
 @Composable
 fun ColumnContent() {
@@ -85,6 +69,14 @@ fun MyScreenContent() {
                 .height(200.dp),
                     contentAlignment = Alignment.BottomStart
         ) {
+
+                    val result = unsplashApiService.getPhoto(accessKey, "query")
+                    val imageUrl = result.urls.regular
+                    val imageDescription = result.description
+                }
+
+
+
             Image(
                 painter = painterResource(id = R.drawable.img1),
                 contentDescription = null,
@@ -205,9 +197,6 @@ fun MyScreenContent() {
                     .width(223.dp)
                     .padding(end = 15.dp)
             ) {
-                // Left side content
-                // Replace these with appropriate compose equivalents
-                // For example:
                 Text(
                     text = "Camera",
                     color = Color.White,
@@ -253,9 +242,6 @@ fun MyScreenContent() {
                     .weight(1f)
                     .padding(start = 15.dp)
             ) {
-                // Right side content
-                // Replace these with appropriate compose equivalents
-                // For example:
                 Text(
                     text = "Apeture",
                     color = Color.White,
@@ -292,7 +278,6 @@ fun MyScreenContent() {
                     fontSize = 14.sp,
                     modifier = Modifier.padding(bottom = 20.dp)
                 )
-                // Other TextViews...
             }
         }
         Row(
@@ -308,9 +293,6 @@ fun MyScreenContent() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Left side content
-                // Replace these with appropriate compose equivalents
-                // For example:
                 Text(
                     text = "Views",
                     color = Color.White,
@@ -333,9 +315,6 @@ fun MyScreenContent() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Right side content
-                // Replace these with appropriate compose equivalents
-                // For example:
                 Text(
                     text = "Downloads",
                     color = Color.White,
@@ -357,9 +336,6 @@ fun MyScreenContent() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Right side content
-                // Replace these with appropriate compose equivalents
-                // For example:
                 Text(
                     text = "Likes",
                     color = Color.White,
@@ -422,5 +398,23 @@ fun MyScreenContent() {
         }
     }
 }
+
+interface UnsplashApiService {
+    @GET("/photos/:id")
+    suspend fun getPhoto(
+        @Query("https://api.unsplash.com/photos/?client_id=client_id") clientId: String,
+        @Query("query") query: String
+    ): UnsplashPhoto
+}
+
+val retrofit: Retrofit = Retrofit.Builder()
+    .baseUrl("https://api.unsplash.com/")
+    .addConverterFactory(GsonConverterFactory.create())
+    .build()
+
+val unsplashApiService = retrofit.create(UnsplashApiService::class.java)
+val accessKey = "client_id"
+
+
 
 
