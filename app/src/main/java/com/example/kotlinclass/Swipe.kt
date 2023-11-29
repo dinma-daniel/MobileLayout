@@ -31,10 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
-import retrofit2.http.Url
 
-data class UnsplashImage(
-    val result: unsplashApiService.getPhoto(accessKey, "query")
-    val imageUrl: Url
-    val imageDescription: String
-)
+class Swipe: ComponentActivity() {
+
+}
