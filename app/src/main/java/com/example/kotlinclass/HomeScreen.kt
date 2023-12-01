@@ -82,8 +82,8 @@ fun HomeScreen(
     navController: NavController,
     catViewModel: CatViewModel
 ) {
+    catViewModel.fetchCats()
 
-    val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -261,7 +261,6 @@ fun HomeScreen(
         Surface(
             modifier = Modifier
                 .padding(16.dp)
-                .verticalScroll(scrollState)
         ) {
             Column {
                 val catImages = catViewModel.items.observeAsState(emptyList())
