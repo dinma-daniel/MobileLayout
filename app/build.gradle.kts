@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -47,10 +48,17 @@ android {
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
+    implementation ("androidx.compose.material3:material3:1.1.2")
+    implementation ("androidx.compose.material3:material3-window-size-class:1.1.2")
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.appcompat:appcompat:1.6.1")
